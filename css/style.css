@@ -1,0 +1,678 @@
+:root {
+    --warna-utama: #f5f5f5;
+    --warna-begron: hsl(266, 75%, 44%);
+    --warna-kedua: #505050;
+    --warna-kehitaman: #404040;
+    --warna-biru: #a833ec;
+    --warna-nav: #965DE9 #6458EE
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: unset;
+    text-decoration: none;
+}
+
+body,
+html {
+    background-color: var(--warna-begron);
+    scroll-behavior: smooth;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* General styles for the typing container */
+#animated-text {
+    font-size: 2rem;
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden; /* Hide the text while typing/deleting */
+}
+
+/* Animating the typing effect */
+@keyframes typing {
+    from {
+        width: 0; /* Start with no width */
+    }
+    to {
+        width: 100%; /* Expand the width to the full length of the word */
+    }
+}
+
+/* Animating the deleting effect */
+@keyframes deleting {
+    from {
+        width: 100%; /* Start with full width */
+    }
+    to {
+        width: 0; /* Shrink the width to zero */
+    }
+}
+
+/* Combined animation for typing and deleting text */
+.typing {
+    animation: typing 2s steps(30, end) 1 forwards;
+}
+
+.deleting {
+    animation: deleting 1s steps(30, end) 1 forwards;
+}
+
+
+.nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99;
+    background-color: var(--warna-navS);
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.menu-wrap {
+    max-width: 1366px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+.logo {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--warna-utama);
+}
+
+/* Icon Container */
+.icon-container {
+    display: flex;
+    justify-content: center;
+    gap: 30px; /* Space between icon-text pairs */
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* Each icon-text pair */
+.icon-item {
+    text-align: center;
+}
+
+/* Fade-in effect for text */
+.fade-in-text {
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1.5s forwards; /* Apply fadeIn animation */
+}
+
+/* Animation for fading in */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(10px); /* Slightly move the text up */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0); /* Text will stay at its normal position */
+    }
+}
+
+/* Apply staggered delays */
+.icon-item:nth-child(1) .fade-in-text {
+    animation-delay: 0.3s; /* First text fades in after 0.3s */
+}
+
+.icon-item:nth-child(2) .fade-in-text {
+    animation-delay: 0.6s; /* Second text fades in after 0.6s */
+}
+
+.icon-item:nth-child(3) .fade-in-text {
+    animation-delay: 0.9s; /* Third text fades in after 0.9s */
+}
+
+/* Icon Style */
+.bx {
+    font-size: 60px; /* Increase size of the icons */
+    color: #404040; /* Set the color of the icons */
+    display: inline-flex; /* Align icons horizontally */
+    justify-content: center;
+    gap: 20px; /* Space between the icons */
+    margin-top: 2px;
+
+    /* Glowing effect */
+    text-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 10px rgba(30, 144, 255, 0.7), 
+                 0 0 20px rgba(30, 144, 255, 0.6), 0 0 40px rgba(30, 144, 255, 0.5);
+    transition: transform 0.3s ease-in-out, text-shadow 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.bx:hover {
+    transform: scale(1.3); /* Slightly increase the size of the icons on hover */
+    text-shadow: 0 0 10px rgba(30, 144, 255, 1), 0 0 20px rgba(30, 144, 255, 1), 
+                 0 0 30px rgba(30, 144, 255, 1), 0 0 50px rgba(30, 144, 255, 0.8);
+    color: #1e90ff; /* Change the icon color to blue on hover */
+}
+
+/* Optional: Add a subtle color change for the icons when they are hovered over */
+.bx {
+    color: #ffffff; /* Initial color */
+    transition: color 0.3s ease; /* Smooth transition for color change */
+}
+
+.bx:hover {
+    color: #1e90ff; /* Icon color turns blue when hovered */
+}
+
+
+.menu {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.menu-item {
+    margin-left: 1rem;
+    padding: .5rem 1.5rem;
+    font-weight: 600;
+    color: var(--warna-utama);
+    transition: .5s ease-in-out;
+    cursor: pointer;
+}
+
+#home {
+    background-image: url(../assets/Home\ \(1\).png);
+}
+
+.menu-item:hover,
+.menu-item.active {
+    color: var(--warna-biru);
+    background-color: var(--warna-utama);
+    border-radius: 10px;
+}
+
+.fullheight {
+    height: 100vh;
+}
+
+.align-items-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.bekgron-gambar {
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bekgron-gambar-fixed {
+    background-attachment: fixed;
+}
+
+.container {
+    width: 100%;
+    max-width: 1366px;
+    margin: 0 auto;
+}
+
+
+section {
+    padding: 9rem 0;
+}
+
+.bagiankhusus {
+    text-align: left;
+}
+
+.bagiankhusus h1 {
+    font-size: 4rem;
+    color: var(--warna-utama);
+}
+
+.bagiankhusus button {
+    padding: 1rem 5rem;
+    outline: none;
+    border: none;
+    background-color: var(--warna-begron);
+    border: .125rem solid var(--warna-utama);
+    border-radius: 10px;
+    color: var(--warna-utama);
+    margin: 3rem 0;
+    cursor: pointer;
+    font-weight: 600;
+    transition: .5s ease-in-out;
+}
+
+.bagiankhusus button:hover {
+    background-color: var(--warna-utama);
+    color: var(--warna-biru);
+}
+
+.full_lebar {
+    width: 100%;
+}
+
+.bagiankhusus p {
+    color: #f5f5f5;
+}
+
+#tentang img {
+    border-radius: 2rem;
+    box-shadow: rgba(17, 17, 26, 0.1) 0px 8px 24px,
+        rgba(17, 17, 26, 0.1) 0px 16px 56px,
+        rgba(17, 17, 26, 0.1) 0px 24px 80px;
+}
+
+
+.tentang-bagiankhusus {
+    padding: 4rem;
+    background-color: var(--warna-biru);
+    border-radius: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+}
+
+.tentang-bagiankhusus.start {
+    transform: translateX(-10rem) !important;
+}
+
+.tentang-bagiankhusus h3 {
+    font-size: 2rem;
+    margin-bottom: 3rem;
+    color: var(--warna-kehitaman);
+}
+
+.primary-color {
+    color: var(--warna-utama);
+}
+
+.kontener {
+    margin: 2rem;
+    padding: 3rem;
+    background-color: var(--warna-biru);
+    border-radius: 2rem;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.kontener h1 {
+    color: var(--warna-kehitaman);
+}
+
+/* Style the container for the contact icon and text */
+p {
+    display: flex; /* Align icon and text horizontally */
+    align-items: center; /* Vertically center the items */
+    gap: 10px; /* Space between icon and text */
+    margin: 10px 0; /* Space between paragraphs */
+    color: var(--warna-utama)
+}
+
+/* Style for the contact icon */
+.contact-icon {
+    color: #1e90ff; /* Icon color */
+    font-size: 18px; /* Smaller icon size */
+    transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease; /* Smooth transition */
+}
+
+/* Hover effect for icons */
+.contact-icon:hover {
+    transform: scale(1.2); /* Slightly enlarge icon on hover */
+    color: #ff6347; /* Change icon color on hover */
+}
+
+/* Glowing effect when clicked or focused */
+.contact-icon:active,
+.contact-icon:focus {
+    color: #1e90ff; /* Keep the color blue */
+    text-shadow: 0 0 5px rgba(30, 144, 255, 0.8), 0 0 10px rgba(30, 144, 255, 1), 0 0 15px rgba(30, 144, 255, 1); /* Blue glowing effect */
+    transform: scale(1.2); /* Slightly enlarge the icon when selected */
+}
+
+/* Style for the text next to the icons */
+span {
+    font-size: 16px; /* Text size */
+    color: #ffffff; /* Text color */
+}
+
+.footer {
+    color: var(--warna-utama);
+}
+
+.footer h1 {
+    color: var(--warna-utama);
+}
+
+.input-group {
+    padding: 1rem;
+    border: .125rem solid var(--warna-utama);
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.input-group input {
+    flex: auto;
+    outline: none;
+    border: none;
+    color: var(--warna-utama);
+    background-color: transparent;
+}
+
+.input-group button {
+    padding: .5rem 1rem;
+    outline: none;
+    border: none;
+    background-color: var(--warna-utama);
+    border-radius: 10px;
+    color: var(--warna-biru);
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.back-to-top {
+    width: 60px;
+    height: 60px;
+    position: fixed;
+    bottom: 70px;
+    right: 70px;
+    border-radius: 10px;
+    background-color: var(--warna-utama);
+    color: var(--warna-biru);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    padding: 10px;
+    z-index: 99;
+    display: none;
+}
+
+/* ANIMATION */
+
+.bagiankiri {
+    transform: translateX(-150%);
+    transition: 1s ease-in-out;
+}
+
+.bagiankiri.start {
+    transform: translateX(0);
+}
+
+.bagiankanan {
+    transform: translateX(150%);
+    transition: 1s ease-in-out;
+}
+
+.bagiankanan.start {
+    transform: translateX(0);
+}
+
+.zoom {
+    transform: scale(0);
+    transition: .6s ease-in-out;
+}
+
+.zoom.start {
+    transform: unset;
+}
+
+.bottom-up {
+    transform: translateY(30%);
+    transition: .8s ease-in-out;
+}
+
+.bottom-up.start {
+    transform: translateY(0);
+}
+
+.delay-2 {
+    transition-delay: .2s;
+}
+
+.delay-4 {
+    transition-delay: .4s;
+}
+
+.delay-6 {
+    transition-delay: .6s;
+}
+
+.delay-8 {
+    transition-delay: .8s;
+}
+
+.delay-10 {
+    transition-delay: .10s;
+}
+
+.delay-12 {
+    transition-delay: .12s;
+}
+
+
+
+
+
+
+/* GRID SYSTEM */
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+[class*="col-"] {
+    padding: 1rem;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.mobile-navigasi {
+    display: none;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 400px) {
+
+    #home {
+        background-image: url(../assets/Home\ \(6\).png);
+    }
+
+    * {
+        font-size: 11px;
+    }
+
+    h1 {
+        font-size: 2rem !important;
+    }
+
+    span {
+        font-size: inherit;
+    }
+
+    .kontener h1 {
+        color: var(--warna-kehitaman);
+        font-size: 20px !important;
+        margin: 2rem;
+    }
+
+
+    .tentang {
+        background-image: url(../assets/FAQs.png);
+        background-attachment: fixed;
+    }
+
+    .tentang-bagiankhusus.start {
+        transform: translateX(0) !important;
+    }
+
+    .kontener {
+        padding: 2rem;
+        margin: 1rem;
+    }
+
+  
+
+    .back-to-top {
+        bottom: 6rem;
+        right: 1rem;
+    }
+
+    
+  
+
+    /* MOBILE NAV */
+
+        .mobile-navigasi {
+            position: fixed;
+            bottom: 0;
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--warna-utama);
+            z-index: 99;
+        overflow: hidden;
+        border-top-left-radius: 2rem;
+        border-top-right-radius: 2rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+    .mobile-navigasi-item {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 25%;
+        padding: 1rem 0;
+    }
+
+    .mobile-navigasi-item i,
+    .mobile-navigasi-item a {
+        font-size: 2rem;
+        color: var(--warna-biru);
+        z-index: 2;
+        transition: .5s ease-in-out;
+    }
+
+    .mobile-navigasi-item.active i {
+        color: var(--warna-utama);
+    }
+
+    .mobile-navigasi-animasipindah {
+        position: absolute;
+        left: 0;
+        width: 25%;
+        height: 100%;
+        background-color: var(--warna-biru);
+        transition: .5s ease-in-out;
+    }
+
+    /* END MOBILE NAV */
+
+    .col-xs-1 {
+        width: 8.33%;
+    }
+
+    .col-xs-2 {
+        width: 16.66%;
+    }
+
+    .col-xs-3 {
+        width: 25%;
+    }
+
+    .col-xs-4 {
+        width: 33.33%;
+    }
+
+    .col-xs-5 {
+        width: 41.66%;
+    }
+
+    .col-xs-6 {
+        width: 50%;
+    }
+
+    .col-xs-7 {
+        width: 58.33%;
+    }
+
+    .col-xs-8 {
+        width: 66.66%;
+    }
+
+    .col-xs-9 {
+        width: 75%;
+    }
+
+    .col-xs-10 {
+        width: 83.33%;
+    }
+
+    .col-xs-11 {
+        width: 91.66%;
+    }
+
+    .col-xs-12 {
+        width: 100%;
+    }
+
+    .h-xs {
+        display: none;
+
+    }
+}
+
+
